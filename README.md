@@ -1,10 +1,22 @@
-# MPR_Selection
-Demonstration of an algorithm for Multi-Point Relay (MPR) nodes selection in the Optimized Link-State Routing (OLSR) protocol.
-The "Selector" script works in two main steps: 
-1- Select the first-hop neighbors that cover isolated second-hop neighbors. 
-2- Select additional first-hop neighbors based on maximum coverage criteria. 
-The algorithm stops when all second-hop neighbors are covered by the selected MPRs.
+# MPR Selection in OLSR Protocol
 
-Please cite this code as: Mahdi Saleh, “MPR Selection in OLSR protocol,” 2020, doi: 10.13140/RG.2.2.29685.60640.
+This repository provides a reference implementation of an algorithm for selecting
+Multi-Point Relay (MPR) nodes in the Optimized Link-State Routing (OLSR) protocol.
 
-[![View MPR Selection in OLSR protocol on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/71079-mpr-selection-in-olsr-protocol)
+## Algorithm overview
+The MPR selection process is performed in two main steps:
+1. Select first-hop neighbors that uniquely cover isolated second-hop neighbors.
+2. Iteratively select additional first-hop neighbors based on maximum remaining
+   second-hop coverage.
+
+The algorithm terminates once all second-hop neighbors are covered by the selected MPR set.
+
+## Citation
+If you use this code in academic work, please cite:
+
+Mahdi Saleh, *“MPR Selection in OLSR Protocol,”* 2020.  
+DOI: 10.13140/RG.2.2.29685.60640
+
+## Related resources
+[![View on MATLAB File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)]
+(https://www.mathworks.com/matlabcentral/fileexchange/71079-mpr-selection-in-olsr-protocol)
