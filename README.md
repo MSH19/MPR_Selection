@@ -43,6 +43,7 @@ If this toolbox is not available, the following equivalent base-MATLAB replaceme
 can be used without changing the algorithm’s behavior:
 ```matlab
 mpr_selector = node_ids(randi(numel(node_ids)));
+```
 
 ## How to cite
 If you use this code in academic work, please cite:
