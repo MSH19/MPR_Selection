@@ -5,7 +5,8 @@ Multi-Point Relay (MPR) nodes in the Optimized Link-State Routing (OLSR) protoco
 
 ## Algorithm overview
 The MPR selection process is performed in two main steps:
-1. Select first-hop neighbors that uniquely cover isolated second-hop neighbors.
+1. Select first-hop neighbors that uniquely cover second-hop neighbors
+   reachable via exactly one first-hop neighbor.
 2. Iteratively select additional first-hop neighbors based on maximum remaining
    second-hop coverage.
 
