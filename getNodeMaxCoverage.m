@@ -1,21 +1,41 @@
-%=========================================================================
-% Get the node that has maximum coverage of a reference list
-% Input: array of candidates, refernce list
-% Output: node with max coverage, covered nodes
-%=========================================================================
-function [node_maxCoverage, covered_set] = getNodeMaxCoverage(candidates, reference, graph)
+function [best_node, covered_set] = getNodeMaxCoverage(candidates, reference, G)
+% GETNODEMAXCOVERAGE Pick the candidate that covers the most uncovered nodes.
+%
+% candidates: possible relay nodes (e.g., remaining N1)
+% reference : nodes we still need to cover (e.g., uncovered N2)
+%
+% Output:
+%   best_node   - candidate with maximum coverage (empty if no progress)
+%   covered_set - which reference nodes it covers
 
-maxCovereage = 0;
-covered_set = [];
+    best_node = [];
+    covered_set = [];
 
-% loop into canditaties and get the node with max coverage 
-for i=1:length(candidates)
-    [covered, count_covered] = getIncludedNeighbors(candidates(i), graph, reference);
-    if (count_covered > maxCovereage)
-        maxCovereage = count_covered;
-        node_maxCoverage = candidates(i);
-        covered_set = covered;
-    end 
-end %end for 
+    if isempty(candidates) || isempty(reference)
+        return;
+    end
 
-end %end function getNodeMaxCoverage
+    candidates = unique(candidates(:)');   % row
+    reference  = unique(reference(:)');    % row
+
+    maxCoverage = 0;
+
+    for i = 1:numel(candidates)
+        % Nodes in "reference" that this candidate can reach in one hop
+        covered = intersect(neighbors(G, candidates(i)), reference);
+        n_cov = numel(covered);
+
+        % Strict '>' gives deterministic tie-break (first max wins)
+        if n_cov > maxCoverage
+            maxCoverage = n_cov;
+            best_node = candidates(i);
+            covered_set = covered(:)';     % row
+        end
+    end
+
+    % If nobody covers anything, return empty to signal "stuck"
+    if maxCoverage == 0
+        best_node = [];
+        covered_set = [];
+    end
+end

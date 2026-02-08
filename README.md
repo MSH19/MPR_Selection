@@ -1,53 +1,113 @@
-# A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm
-## Application to Multi-Point Relay (MPR) Selection in OLSR
+# A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm  
+## Application to Multi-Point Relay (MPR) Selection
 
-This repository provides a reference implementation of the canonical greedy
-coverage-based relay selection algorithm used for Multi-Point Relay (MPR)
-selection in the Optimized Link-State Routing (OLSR) protocol. The implementation
-demonstrates the core MPR selection logic in a clear and reusable form and is not
-intended to provide a complete routing protocol implementation.
+This repository provides a **clear, auditable reference implementation** of the canonical greedy
+coverage-based relay selection algorithm used for **Multi-Point Relay (MPR)** selection in the
+**Optimized Link-State Routing (OLSR)** protocol.
+
+The goal is **not** to implement a full routing protocol, but to expose the **core MPR selection
+logic** as a standalone, deterministic graph algorithm suitable for inspection, reuse, and fair
+comparison.
+
+---
 
 ## Algorithm overview
-The relay (MPR) selection process is performed in two steps:
 
-1. First-hop neighbors that uniquely cover second-hop neighbors (i.e., second-hop
-   nodes reachable via exactly one first-hop neighbor) are selected mandatorily.
+Relay (MPR) selection is performed using a **two-stage greedy process** based solely on two-hop
+neighbourhood information:
 
-2. Additional first-hop neighbors are then selected iteratively based on maximum
-   remaining second-hop coverage.
+1. **Mandatory relay selection**  
+   One-hop neighbours that are the *only* nodes capable of reaching specific two-hop neighbours
+   are selected mandatorily to guarantee full coverage.
 
-The algorithm terminates once all second-hop neighbors are covered by the selected
-relay (MPR) set.
+2. **Greedy completion**  
+   Remaining uncovered two-hop neighbours are covered iteratively by selecting the one-hop
+   neighbour that provides the **maximum additional coverage**.  
+   Ties are resolved deterministically by selecting the **lowest-index node**.
 
-This implementation operates on two-hop neighborhood information in order to match
-OLSR requirements. The underlying greedy coverage formulation is not inherently
-limited to two hops and can be extended to k-hop coverage by redefining the selector
-and target node sets.
+The algorithm terminates once all reachable two-hop neighbours are covered or no further progress
+is possible.
+
+While this implementation matches the **two-hop requirement of OLSR**, the underlying formulation
+is general and can be extended to *k-hop* coverage by redefining candidate and target sets.
+
+---
+
+## Repository contents
+
+- `mpr_select.m`  
+  Core reference implementation of the coverage-based relay (MPR) selection algorithm.
+
+- `get_First_Second_Neighbors.m`  
+  Utility to extract one-hop and two-hop neighbourhoods for a given selector node.
+
+- `getNodeMaxCoverage.m`  
+  Helper function used during greedy selection to determine maximum uncovered coverage.
+
+- `createConnectedNetwork.m`  
+  Generates random connected undirected graphs for controlled experiments.
+
+- `demo_mpr_select.m`  
+  Minimal demo illustrating MPR selection on a single random topology.
+
+- `mpr_stress_test.m`  
+  Systematic stress-test framework sweeping network size and connectivity and exporting evaluation
+  results.
+
+- `plot_mpr_full_ieee.m`  
+  IEEE-style plotting utility for publication-quality figures (vector PDF output).
+
+---
 
 ## Intended use
+
 This code is intended for:
-- Reference and educational use
-- Reproducible evaluation of MPR selection logic
-- Baseline comparison for enhanced or weighted MPR selection schemes
-- Relay or forwarder selection studies in distributed and multi-hop networks
 
-## Implementation notes and requirements
-- The demo script (`Selector.m`) generates a random connected network using MATLAB
-  graph utilities. Network generation may retry multiple times until a connected
-  graph is obtained.
-- The MPR selector node is chosen uniformly at random.
-- The implementation uses the `datasample` function; therefore, the MATLAB
-  Statistics and Machine Learning Toolbox is required.
+- Reference and educational purposes  
+- Reproducible evaluation of MPR / relay selection logic  
+- Baseline comparison for enhanced, weighted, or learning-based relay selection schemes  
+- Algorithm-level studies of broadcast optimisation in distributed and multi-hop networks  
 
-If this toolbox is not available, the following equivalent base-MATLAB replacement
-can be used without changing the algorithm’s behavior:
-```matlab
-mpr_selector = node_ids(randi(numel(node_ids)));
-```
+The implementation is **protocol-agnostic** and deliberately isolated from MAC, routing, mobility,
+and traffic models.
 
-## How to cite
-If you use this code in academic work, please cite:
+---
 
-Mahdi Saleh, *“MPR Selection in OLSR Protocol,”* 2020.  
-DOI: 10.13140/RG.2.2.29685.60640
+## Determinism and reproducibility
 
+- All algorithmic choices are **deterministic** given a fixed graph and selector node.
+- Ties during greedy selection are resolved using a **fixed, documented rule**.
+- Randomised experiments rely on controlled seeding in the stress-test scripts.
+- Figures are exported as **vector PDF** for reproducible publication use.
+
+---
+
+## Software and environment
+
+The code was developed and evaluated using:
+
+- MATLAB R2024b  
+- Windows 11  
+- Intel Core i7-1250U (10 cores), 16 GB RAM  
+
+Only **base MATLAB functionality** is required for the current codebase.
+
+---
+
+## Relation to the paper
+
+This repository accompanies the paper:
+
+**Coverage-Based Relay Selection: A Reference Implementation**
+
+The code and evaluation framework are intended to support:
+- independent verification of results,
+- fair comparison against alternative relay-selection strategies,
+- and reuse in future protocol and systems research.
+
+---
+
+## Citation
+
+A formal citation will be added **once the preprint is released**.  
+Until then, please reference this repository and the accompanying paper draft.

@@ -1,29 +1,31 @@
-%=========================================================================
-% Get the first-hop and second-hop neighbors of a node
-% Input: index of a node, graph
-% Output: array of first-hop neighbors, array of second-hop neighbors
-%=========================================================================
-function [firstHop_neighbors, secondHop_neighbors] = get_First_Second_Neighbors(node, graph)
+function [N1, N2] = get_First_Second_Neighbors(node, G)
+% GET_FIRST_SECOND_NEIGHBORS First- and second-hop neighbors of a node.
+%
+% N1: direct (1-hop) neighbors of "node"
+% N2: nodes reachable in 2 hops via any node in N1, excluding:
+%     - the node itself
+%     - all nodes in N1
+%
+% Outputs are row vectors, unique and sorted.
 
-% 1- Get the set of first-hop neighbors of the node
-firstHop_neighbors = neighbors(graph, node);
+    % 1-hop neighbors
+    N1 = sort(neighbors(G, node))';   % row, sorted
 
-% 2- Get the second-hop neighbors of the node 
-secondHop_neighbors = [];
+    % If node is isolated, it has no 2-hop neighbors
+    if isempty(N1)
+        N2 = [];
+        return;
+    end
 
-for i=1:length(firstHop_neighbors) 
-    
-    % get neighbors of each first hop neighbor
-    temp_secondHop_neighbors = neighbors(graph, firstHop_neighbors(i));    
-    
-    % check if each neighbor can be added to the second-hop neighbors
-    for j=1:length(temp_secondHop_neighbors)
-        x = temp_secondHop_neighbors(j); 
-        if ((~ismember(x, firstHop_neighbors)) && (x~=node) && (~ismember(x,secondHop_neighbors)))
-            % append to the list of second-hop neighbors
-            secondHop_neighbors = [secondHop_neighbors, x]; 
-        end % end if    
-    end % end for
-end % end for
+    % Collect neighbors of all 1-hop neighbors
+    n2_all = [];
+    for k = 1:numel(N1)
+        n2_all = [n2_all; neighbors(G, N1(k))];
+    end
 
-end %end function get_First_Second_Neighbors
+    % Keep only true 2-hop nodes (remove self and 1-hop nodes)
+    n2_all = unique(n2_all(:));
+    n2_all(n2_all == node) = [];
+    N2 = setdiff(n2_all, N1(:), 'stable');
+    N2 = sort(N2(:))';                % row, sorted
+end
