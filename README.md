@@ -1,11 +1,11 @@
-# A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm  
+# A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm
 ## Application to Multi-Point Relay (MPR) Selection
 
 This repository provides a **clear, auditable reference implementation** of the canonical greedy
 coverage-based relay selection algorithm used for **Multi-Point Relay (MPR)** selection in the
 **Optimized Link-State Routing (OLSR)** protocol.
 
-The goal is **not** to implement a full routing protocol, but to expose the **core MPR selection
+The goal is **not** to implement a full routing protocol, but to expose the **core relay selection
 logic** as a standalone, deterministic graph algorithm suitable for inspection, reuse, and fair
 comparison.
 
@@ -36,7 +36,7 @@ is general and can be extended to *k-hop* coverage by redefining candidate and t
 ## Repository contents
 
 - `mpr_select.m`  
-  Core reference implementation of the coverage-based relay (MPR) selection algorithm.
+  Core reference implementation of the coverage-based relay selection algorithm.
 
 - `get_First_Second_Neighbors.m`  
   Utility to extract one-hop and two-hop neighbourhoods for a given selector node.
@@ -48,11 +48,15 @@ is general and can be extended to *k-hop* coverage by redefining candidate and t
   Generates random connected undirected graphs for controlled experiments.
 
 - `demo_mpr_select.m`  
-  Minimal demo illustrating MPR selection on a single random topology.
+  Minimal demo illustrating relay selection on a single random topology.
 
 - `mpr_stress_test.m`  
   Systematic stress-test framework sweeping network size and connectivity and exporting evaluation
   results.
+
+- `make_mpr_plots_1x3.m`  
+  Script to generate the three-panel illustrative figure (sparse, medium, dense connectivity)
+  used in the accompanying paper to visualise the effect of topology density on relay selection.
 
 - `plot_mpr_full_ieee.m`  
   IEEE-style plotting utility for publication-quality figures (vector PDF output).
@@ -98,7 +102,7 @@ Only **base MATLAB functionality** is required for the current codebase.
 
 This repository accompanies the paper:
 
-**Coverage-Based Relay Selection: A Reference Implementation**
+**A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm**
 
 The code and evaluation framework are intended to support:
 - independent verification of results,
@@ -110,4 +114,4 @@ The code and evaluation framework are intended to support:
 ## Citation
 
 A formal citation will be added **once the preprint is released**.  
-Until then, please reference this repository and the accompanying paper draft.
+Until then, please reference this repository and the accompanying paper.
