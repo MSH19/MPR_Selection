@@ -117,7 +117,7 @@ If you use this code or build upon it, please cite the accompanying preprint:
 
 **Mahdi Saleh**, *A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm*, Authorea, February 9, 2026.
 
-DOI: **10.22541/au.177067604.44448031/v1** (registration in progress)
+DOI: **10.22541/au.177067604.44448031/v1**           
 
 Preprint URL: https://www.authorea.com/users/814216/articles/1386892-a-reference-implementation-of-a-greedy-coverage-based-relay-selection-algorithm
 
