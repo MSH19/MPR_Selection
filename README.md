@@ -100,18 +100,35 @@ Only **base MATLAB functionality** is required for the current codebase.
 
 ## Relation to the paper
 
-This repository accompanies the paper:
+This repository accompanies the preprint:
 
 **A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm**
 
-The code and evaluation framework are intended to support:
+The code and evaluation framework support:
 - independent verification of results,
-- fair comparison against alternative relay-selection strategies,
-- and reuse in future protocol and systems research.
+- look-up and reuse as a reference implementation,
+- fair comparison against alternative relay-selection strategies.
 
 ---
 
 ## Citation
 
-A formal citation will be added **once the preprint is released**.  
-Until then, please reference this repository and the accompanying paper.
+If you use this code or build upon it, please cite the accompanying preprint:
+
+**Mahdi Saleh**, *A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm*, Authorea, February 9, 2026.
+
+DOI: **10.22541/au.177067604.44448031/v1** (registration in progress)
+
+Preprint URL: https://www.authorea.com/users/814216/articles/1386892-a-reference-implementation-of-a-greedy-coverage-based-relay-selection-algorithm
+
+**BibTeX:**
+```bibtex
+@article{Saleh2026MPR,
+  author  = {Saleh, Mahdi},
+  title   = {A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm},
+  journal = {Authorea Preprints},
+  year    = {2026},
+  month   = feb,
+  doi     = {10.22541/au.177067604.44448031/v1}
+}
+```
