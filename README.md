@@ -9,6 +9,8 @@ The goal is **not** to implement a full routing protocol, but to expose the **co
 logic** as a standalone, deterministic graph algorithm suitable for inspection, reuse, and fair
 comparison.
 
+Preprint available on Authorea (DOI: 10.22541/au.177067604.44448031/v1)                
+
 ---
 
 ## Algorithm overview
