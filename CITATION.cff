@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying preprint."
+authors:
+  - family-names: Saleh
+    given-names: Mahdi
+title: "A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm"
+version: 1.0.0
+date-released: 2026-02-09
+doi: 10.22541/au.177067604.44448031/v1
+url: https://www.authorea.com/users/814216/articles/1386892-a-reference-implementation-of-a-greedy-coverage-based-relay-selection-algorithm
