@@ -11,6 +11,18 @@ comparison.
 
 Preprint available on Authorea (DOI: 10.22541/au.177067604.44448031/v1)                
 
+## Example result
+
+The figure below shows MPR selection for a sample selector node (red star, v = 8).
+
+- Green: one-hop neighbours  
+- Black: two-hop neighbours  
+- Red circles: selected relays (MPR set)
+
+<p align="center">
+  <img src="outputs/demo.png" width="750">
+</p>
+
 ---
 
 ## Algorithm overview
