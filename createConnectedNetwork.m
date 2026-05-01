@@ -1,5 +1,5 @@
 function [G, info] = createConnectedNetwork(N, decision_threshold)
-% CREATECONNECTEDNETWORK Create a connected random undirected graph.
+% This function creates a connected random undirected graph.
 %
 % This uses a simple model:
 %   1) Build a random spanning tree (so the graph is connected).
@@ -13,16 +13,17 @@ function [G, info] = createConnectedNetwork(N, decision_threshold)
 %   G    - MATLAB graph object (undirected)
 %   info - basic graph statistics used by the demo and evaluation
 
-    % Default sparsity setting if not provided
+    % Default sparsity setting if not provided (sets default to 0.5)
     if nargin < 2 || isempty(decision_threshold)
         decision_threshold = 0.5;
     end
 
-    % Basic input checks (keeps the function safe to call)
+    % Basic input checks (keeps the function safe to call) (input validation)
     validateattributes(N, {'numeric'}, {'scalar','integer','>=',2});
     validateattributes(decision_threshold, {'numeric'}, {'scalar','>=',0,'<=',1});
 
-    % Probability of adding an extra edge between two nodes
+    % Probability of adding an extra edge between two nodes (here the
+    % probability is inverse to the decision threshold)
     p_extra = 1 - decision_threshold;
 
     %% 1) Build a random spanning tree (guarantees connectivity)
@@ -35,7 +36,7 @@ function [G, info] = createConnectedNetwork(N, decision_threshold)
         A(min(u,v), max(u,v)) = 1;      % store as upper-tri entry
     end
 
-    %% 2) Add extra random edges (controls graph density)
+    %% 2) Add extra random edges (controls graph density by adding extra links)
     for i = 1:N
         for j = i+1:N
             if A(i,j) == 0 && rand < p_extra
@@ -44,10 +45,10 @@ function [G, info] = createConnectedNetwork(N, decision_threshold)
         end
     end
 
-    % Convert adjacency matrix into an undirected MATLAB graph
+    % Convert adjacency matrix into an undirected MATLAB graph (G)
     G = graph(A, 'upper');
 
-    %% Collect simple stats (useful for printing and plots)
+    %% Collect simple stats (useful for printing and plots) (output info)
     num_possible_edges = N*(N-1)/2;
     num_edges = numedges(G);
     deg = degree(G);

@@ -1,5 +1,6 @@
 function out = mpr_select_random(G, mpr_selector)
-% MPR_SELECT_RANDOM Random relay selection baseline.
+% This function applies a randomised selection procedure (not greedy),
+% serving as a baseline method (used in the paper for comparison purposes) 
 %
 % Purpose:
 %   Provides a simple, fair baseline to compare against the greedy MPR method.

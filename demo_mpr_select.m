@@ -1,12 +1,14 @@
 % Demo: MPR selection (OLSR-style) on a connected random graph
-% Shows the full flow: graph creation, MPR selection, and a simple summary.
+% Demonstrates the full flow: graph creation, MPR selection algorithm, 
+% and a outputs a simple summary of the results.
 
+% clearing variables 
 clc;
 clearvars;
 close all;
 
 %% ---------------- User settings ----------------
-total_nodes        = 15;    % total number of nodes
+total_nodes        = 15;    % total number of nodes (demo network)
 decision_threshold = 0.5;   % edge probability ~ (1 - decision_threshold)
                             % higher threshold => fewer edges (sparser)
 
@@ -32,13 +34,13 @@ out = mpr_select(G, mpr_selector);
 
 %% ---------------- Print key results ----------------
 fprintf('Graph: N=%d, |E|=%d, density=%.3f, avg_deg=%.2f\n', ...
-    info.N, info.num_edges, info.edge_density, info.degree_mean);
+    info.N, info.num_edges, info.edge_density, info.degree_mean); % graph
 
 fprintf(['Selector=%d | N1=%d, N2=%d | MPRs=%d | reduction=%.1f%% | ' ...
          'coverage_ok=%d | stage1_MPRs=%d | stage2_MPRs=%d | runtime=%.4fs\n'], ...
     mpr_selector, out.n_firstHop, out.n_secondHop, out.n_mprs, ...
     out.reduction_pct, out.coverage_ok, ...
-    out.n_mprs_stage1, out.n_mprs_stage2, out.runtime_s);
+    out.n_mprs_stage1, out.n_mprs_stage2, out.runtime_s); % selection 
 
 %% ---------------- Plot result (IEEE-style, vector PDF) ----------------
 plot_mpr_full_ieee(G, out, info, mpr_selector, ...

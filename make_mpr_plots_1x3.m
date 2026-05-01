@@ -1,12 +1,17 @@
-% Three side-by-side IEEE-style MPR demo plots.
-% Exports a single vector PDF for a 2-column figure.
+% This code creates three side-by-side IEEE-style MPR demo plots.
+% This plot was created for the paper to demonstrate the algorithm.
+% The result is exported as a single vector PDF suitable for a 2-column figure.
 %
 % Requires: createConnectedNetwork.m, mpr_select.m
 % Outputs: outputs/mpr_demo_triptych.pdf  (vector)
 
+% clearing 
 clc; clear; close all;
+
+% fix for repeatability 
 rng(1);
 
+% output directory 
 outdir  = 'outputs';
 outfile = fullfile(outdir, 'mpr_demo_triptych.pdf');
 if ~exist(outdir,'dir'); mkdir(outdir); end

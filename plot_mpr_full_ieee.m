@@ -1,5 +1,5 @@
 function plot_mpr_full_ieee(G, out, info, mpr_selector, varargin)
-%PLOT_MPR_FULL_IEEE  Full-graph MPR visualisation for IEEE papers (vector PDF)
+% This function creates full-graph MPR visualisation for IEEE papers (vector PDF)
 %
 %   plot_mpr_full_ieee(G, out, info, mpr_selector)
 %   plot_mpr_full_ieee(..., 'Name', Value)

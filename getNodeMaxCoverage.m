@@ -1,16 +1,19 @@
 function [best_node, covered_set] = getNodeMaxCoverage(candidates, reference, G)
-% GETNODEMAXCOVERAGE Pick the candidate that covers the most uncovered nodes.
+% This function picks the candidate node that covers the most uncovered nodes.
 %
-% candidates: possible relay nodes (e.g., remaining N1)
-% reference : nodes we still need to cover (e.g., uncovered N2)
+%
+% candidates: possible relay nodes (e.g., remaining N1 nodes)
+% reference : nodes we still need to cover (uncovered N2 nodes)
 %
 % Output:
-%   best_node   - candidate with maximum coverage (empty if no progress)
-%   covered_set - which reference nodes it covers
+%   best_node   - N1 candidate with maximum coverage (empty if no progress)
+%   covered_set - which reference nodes (N2 nodes) it covers
 
+    % initialization
     best_node = [];
     covered_set = [];
 
+    % validation 
     if isempty(candidates) || isempty(reference)
         return;
     end
@@ -20,6 +23,7 @@ function [best_node, covered_set] = getNodeMaxCoverage(candidates, reference, G)
 
     maxCoverage = 0;
 
+    % find the candidate that covers the largest number of N2 neighbors 
     for i = 1:numel(candidates)
         % Nodes in "reference" that this candidate can reach in one hop
         covered = intersect(neighbors(G, candidates(i)), reference);

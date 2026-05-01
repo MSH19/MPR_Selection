@@ -1,8 +1,8 @@
 function out = mpr_select(G, mpr_selector)
-% MPR_SELECT Greedy MPR selection (OLSR-style) for one selector node.
+% This is the main code for the greedy MPR selection (OLSR-style) algorithm
 %
-% Two-stage procedure:
-%   1) Mandatory relays:
+% The algorithm is a two-stage procedure:
+%   1) Mandatory relays selection:
 %      If a 2-hop node is reachable through only one 1-hop node,
 %      that 1-hop node must be selected.
 %   2) Greedy completion:

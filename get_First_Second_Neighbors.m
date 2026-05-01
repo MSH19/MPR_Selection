@@ -1,7 +1,8 @@
 function [N1, N2] = get_First_Second_Neighbors(node, G)
-% GET_FIRST_SECOND_NEIGHBORS First- and second-hop neighbors of a node.
+% This function takes a graph and a selector node and outputs its first- 
+% and second- hop neighbors
 %
-% N1: direct (1-hop) neighbors of "node"
+% N1: direct (1-hop) neighbors of "node" (direct connection)
 % N2: nodes reachable in 2 hops via any node in N1, excluding:
 %     - the node itself
 %     - all nodes in N1
@@ -27,5 +28,5 @@ function [N1, N2] = get_First_Second_Neighbors(node, G)
     n2_all = unique(n2_all(:));
     n2_all(n2_all == node) = [];
     N2 = setdiff(n2_all, N1(:), 'stable');
-    N2 = sort(N2(:))';                % row, sorted
+    N2 = sort(N2(:))';                % row, sorted (in ascending order)
 end

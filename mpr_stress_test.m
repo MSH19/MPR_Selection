@@ -3,6 +3,8 @@ clear;
 close all;
 
 % =========================================================================
+% Evaluation framework: applies stress tests to evaluate different aspects
+% of the algorithm (uses the main greedy selection algorithm)
 % Minimal stress test: Greedy MPR selection (OLSR-style) - algorithm-level
 %
 % Paper aims (keep minimal):

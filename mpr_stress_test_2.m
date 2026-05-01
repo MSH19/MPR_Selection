@@ -5,6 +5,8 @@ close all;
 % =========================================================================
 % Stress test: Greedy MPR selection with randomised baseline comparison
 %
+% This is designed to apply stress tests for random baseline comparison.
+%
 % Purpose:
 %   Evaluate the greedy coverage-based relay selection algorithm at the
 %   algorithm level, independent of any full routing protocol stack.
