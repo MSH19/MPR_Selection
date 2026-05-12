@@ -1,4 +1,4 @@
-# A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm
+# Coverage-Based Relay Selection Framework
 ## Application to Multi-Point Relay (MPR) Selection
 
 This repository provides a **clear, auditable reference implementation** of the canonical greedy
