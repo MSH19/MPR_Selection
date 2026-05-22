@@ -9,7 +9,15 @@ The goal is **not** to implement a full routing protocol, but to expose the **co
 logic** as a standalone, deterministic graph algorithm suitable for inspection, reuse, and fair
 comparison.
 
-Preprint available on Authorea (DOI: 10.22541/au.177067604.44448031/v1)                
+This work accompanies the published paper:
+
+**Mahdi Saleh**,  
+*A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm*,  
+*Engineering Research Express*, IOP Publishing, 2026.  
+
+DOI: https://doi.org/10.1088/2631-8695/ae6b08
+
+---
 
 ## Example result
 
@@ -114,11 +122,14 @@ Only **base MATLAB functionality** is required for the current codebase.
 
 ## Relation to the paper
 
-This repository accompanies the preprint:
+This repository accompanies the published paper:
 
-**A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm**
+**Mahdi Saleh**,  
+*A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm*,  
+*Engineering Research Express*, IOP Publishing, 2026.
 
 The code and evaluation framework support:
+
 - independent verification of results,
 - look-up and reuse as a reference implementation,
 - fair comparison against alternative relay-selection strategies.
@@ -127,22 +138,24 @@ The code and evaluation framework support:
 
 ## Citation
 
-If you use this code or build upon it, please cite the accompanying preprint:
+If you use this code or build upon it, please cite the accompanying paper:
 
-**Mahdi Saleh**, *A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm*, Authorea, February 9, 2026.
+**Mahdi Saleh**,  
+*A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm*,  
+*Engineering Research Express*, 2026.
 
-DOI: **10.22541/au.177067604.44448031/v1**           
+DOI: https://doi.org/10.1088/2631-8695/ae6b08
 
-Preprint URL: https://www.authorea.com/users/814216/articles/1386892-a-reference-implementation-of-a-greedy-coverage-based-relay-selection-algorithm
+Paper URL: https://iopscience.iop.org/article/10.1088/2631-8695/ae6b08
 
-**BibTeX:**
+### BibTeX
+
 ```bibtex
 @article{Saleh2026MPR,
   author  = {Saleh, Mahdi},
   title   = {A Reference Implementation of a Greedy Coverage-Based Relay Selection Algorithm},
-  journal = {Authorea Preprints},
+  journal = {Engineering Research Express},
   year    = {2026},
-  month   = feb,
-  doi     = {10.22541/au.177067604.44448031/v1}
+  doi     = {10.1088/2631-8695/ae6b08}
 }
 ```
